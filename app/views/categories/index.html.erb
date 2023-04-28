@@ -1,0 +1,29 @@
+<div class="container d-flex flex-column justify-content-between vh-100 bg-light px-0">
+  <div class="flex-1 m-0">
+    <div class="d-flex justify-content-between align-items-center header">
+      <%= render "shared/menu" %>
+      <span class="text-uppercase">categories</span>
+      <%= button_to "", class: "btn btn-small btn-outline text-white" do %>
+        <i class="bi bi-search"></i>
+      <% end %>
+    </div>
+    <ul class="list-group rounded-0">
+      <% @categories.each do |category| %>  
+        <li class="list-group-item shadow-sm justify-content-between align-items-center mb-3">
+          <%= link_to category_expenses_path(category), class: "text-decoration-none" do %>
+          <div class="d-flex justify-content-start gap-2">
+            <%= image_tag url_for(category.icon), alt: category.name, class: "icon object-fit-fill rounded-0 float-left" %>
+            <div class="d-flex flex-1 justify-content-between w-100 py-1 gap-2">
+              <span class="flex-1 align-middle"><%= category.name %></span>
+              <span class="align-middle"><%= number_to_currency(category.total_amount) %></span>
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="btn-color text-white rounded-0 m-0 p-3">
+    <%= link_to "Add new category", new_category_path, class: "btn btn-light btn-color text-white rounded-0 w-100 py-2 m-0" %>
+  </div>
+</div>

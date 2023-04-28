@@ -1,0 +1,19 @@
+<div id='splash' class="container d-flex flex-column justify-content-between vh-100 bg-light px-0">
+  <%= form_for @category do |f| %>
+    <div class="d-flex justify-content-between align-items-center header">
+      <%= link_to categories_path do %>
+        <span class="bi bi-arrow-left" style="font-size:24px;"></span>
+      <% end %>
+      <span class="text-uppercase">New Category</span>
+      <%= f.submit "Save", class: "btn text-white border-0" %>  
+    </div>
+    <fieldset class="mb-3">
+      <%= f.text_field :name, placeholder: "Category Name", required: true, class: "form-control rounded-0 shadow-none" %>
+
+      <%# <%= f.text_field :icon, placeholder: "Add icon", required: true, class: "form-control rounded-0" %>
+    <%= f.label :add_icon, class: "form-control rounded-0" %>
+    <%= f.file_field :icon, required: true, class: "form-control rounded-0" %>
+  </div>
+    </fieldset>
+  <% end %>
+</div>

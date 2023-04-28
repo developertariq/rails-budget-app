@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column justify-content-between vh-100 bg-light px-0">  
+  <%= form_for [@category, @expense] do |f| %>
+    <div class="d-flex justify-content-between align-items-center header">
+      <%= link_to category_expenses_path(@category) do %>
+        <span class="bi bi-arrow-left" style="font-size:24px;"></span>
+      <% end %>
+      <span class="text-uppercase">New Transaction</span>
+      <%= f.submit "Save", class: "btn text-white border-0" %>  
+    </div>
+
+    <fieldset class="mb-3">
+      <%= f.text_field :name, placeholder: "Name", required: true, class: "form-control rounded-0 shadow-none" %>
+      <%= f.number_field :amount, placeholder: "Amoumnt", required: true, class: "form-control rounded-0 shadow-none" %>
+
+      <%= f.label :category %>
+      <%= f.select :category, options_for_select(current_user.categories.map { |c| [c.name, c.id] }, selected: @category.id), { prompt: "Select a category" }, { required: true } %>
+      <%= f.hidden_field :author_id, value: current_user.id %>
+    </fieldset>
+  <% end %>
+</div>
