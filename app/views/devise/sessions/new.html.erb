@@ -1,0 +1,19 @@
+<div class="container d-flex flex-column vh-100 bg-light px-0">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), method: :post) do |f| %>
+    <div class="d-flex justify-content-between align-items-center header">
+      <%= link_to root_path do %>
+        <span class="bi bi-arrow-left" style="font-size:24px;"></span>
+      <% end %>
+      <span class="text-uppercase">login</span>
+      <%= f.submit "Log in", class: "btn text-white border-0" %>
+    </div>
+    <fieldset class="mb-3">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: "email", class: "form-control rounded-0 shadow-none" %>
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "current-password", class: "form-control rounded-0 shadow-none" %>
+    </fieldset>
+  <% end %>
+  <div class="text-center">
+    <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-decoration-none" %><br />
+  </div>
+  <%= render "devise/shared/error_messages", resource: resource %>
+</div>
