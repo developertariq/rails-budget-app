@@ -13,6 +13,7 @@
       <%# <%= f.text_field :icon, placeholder: "Add icon", required: true, class: "form-control rounded-0" %>
     <%= f.label :add_icon, class: "form-control rounded-0" %>
     <%= f.file_field :icon, required: true, class: "form-control rounded-0" %>
+    <%= f.hidden_field :author_id, value: current_user.id %>
   </div>
     </fieldset>
   <% end %>

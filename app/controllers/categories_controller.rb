@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = current_user.categories
+    @user = current_user
+    @categories = @user.categories.all
   end
 
   def new
@@ -8,7 +9,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.categories.build(category_params)
+    @user = current_user
+    @category = @user.categories.new(category_params)
 
     if @category.save
       redirect_to categories_path, notice: 'Category created successfully.'
@@ -20,6 +22,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :icon)
+    params.require(:category).permit(:name, :icon.name, :author_id)
   end
 end
