@@ -79,3 +79,8 @@ group :test do
 end
 
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+gem 'redis'
+
+# Use hiredis to get better performance than the "redis" gem
+gem 'hiredis'
