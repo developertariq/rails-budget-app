@@ -1,0 +1,18 @@
+databases:
+  - name: tariq-budget-app
+    databaseName: tariq-budget-app
+    user: tariq-budget-app
+
+services:
+  - type: web
+    name: tariq-budget-app
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tariq-budget-app
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
