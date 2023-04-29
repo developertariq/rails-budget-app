@@ -19,15 +19,17 @@ RSpec.describe 'categories/new.html.erb', type: :feature do
     icon_path = Rails.root.join('spec', 'fixtures', 'files', 'icon.png')
     file = Rack::Test::UploadedFile.new(icon_path, 'image/png')
     category.icon = file
-  
-    expect { category.save }.not_to change { Category.count }
+    expect do
+      category.save
+    end.not_to change(Category, :count)
     expect(category.errors[:name]).to include("can't be blank")
   end
 
   it 'does not create a new category without an icon' do
     category = Category.new(name: 'Test Category')
-  
-    expect { category.save }.not_to change { Category.count }
+    expect do
+      category.save
+    end.not_to change(Category, :count)
     expect(category.errors[:icon]).to include("can't be blank")
   end
 end

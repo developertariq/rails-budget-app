@@ -5,16 +5,16 @@ RSpec.describe CategoriesController, type: :controller do
   let(:category1) { FactoryBot.create(:category, author: user) }
   let(:category2) { FactoryBot.create(:category, author: user) }
 
-  before do 
+  before do
     user.save
-    sign_in user 
+    sign_in user
   end
 
   describe 'GET #index' do
     it 'returns http success' do
       expect(response).to have_http_status(:success)
     end
-    
+
     it 'renders the index template' do
       get :index
       expect(response).to render_template(:index)

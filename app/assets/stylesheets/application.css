@@ -13,8 +13,11 @@
  *= require_tree .
  *= require_self
  */
+* {
+  box-sizing: border-box;
+}
 
- body {
+body {
   max-width: 325px;
   margin: 0 auto;
   padding: 0;
@@ -23,7 +26,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  color: #434b54
+  color: #434b54;
 }
 
 .header {

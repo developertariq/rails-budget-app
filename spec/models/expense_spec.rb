@@ -12,7 +12,7 @@ RSpec.describe Expense, type: :model do
     it { should belong_to(:category) }
 
     it 'is valid with a name, an amount, an author, and a category' do
-      expense = Expense.new(name: 'Test', amount: 10, category: category, author: user)
+      expense = Expense.new(name: 'Test', amount: 10, category:, author: user)
       expect(expense).to be_valid
     end
 
@@ -37,12 +37,12 @@ RSpec.describe Expense, type: :model do
 
   describe 'associations' do
     it 'belongs to an author' do
-      expense = Expense.new(name: 'Test', amount: 10, author: user, category: category)
+      expense = Expense.new(name: 'Test', amount: 10, author: user, category:)
       expect(expense.author).to eq(user)
     end
 
     it 'belongs to a category' do
-      expense = Expense.new(name: 'Test', amount: 10, author: user, category: category)
+      expense = Expense.new(name: 'Test', amount: 10, author: user, category:)
       expect(expense.category).to eq(category)
     end
   end

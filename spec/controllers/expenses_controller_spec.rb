@@ -5,9 +5,8 @@ RSpec.describe ExpensesController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
   let(:category) { Category.create(name: 'Test', icon: fixture_file_upload('icon.png', 'image/png'), author: user) }
 
-  before do 
-
-    sign_in user 
+  before do
+    sign_in user
   end
 
   describe 'GET #index' do
@@ -15,14 +14,12 @@ RSpec.describe ExpensesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it 'renders the index template' do     
+    it 'renders the index template' do
       get :index, params: { category_id: category.id }
       expect(response).to render_template(:index)
     end
 
     it 'assigns @expenses with user expenses' do
-      expense1 = FactoryBot.create(:expense, category: category, author: user) 
-      expense2 = FactoryBot.create(:expense, category: category, author: user) 
       get :index, params: { category_id: category.id }
       expect(assigns(:expenses)).to eq(category.expenses)
     end
