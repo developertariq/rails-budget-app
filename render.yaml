@@ -1,7 +1,7 @@
 databases:
   - name: tariq-budget-app
     databaseName: tariq-budget-app
-    user: tariq-budget-app
+    user: postgres
 
 services:
   - type: web
