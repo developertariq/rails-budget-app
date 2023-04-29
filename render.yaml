@@ -1,28 +1,24 @@
 databases:
-  - name: rails_budget_app
-    databaseName: rails_budget_app_development
-    user: postgres
+  - name: postgres
+    ipAllowList: []
+    databaseName: rails_budget_app_production
+    user: rails_budget_app
 
 services:
   - type: web
-    name: tariq-budget-app
+    name: rails
     env: ruby
     buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    startCommand: bundle exec rails s
     envVars:
-      - key: DATABASE_URL
-        fromDatabase: 
-          name: mysite
-          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres
+          property: connectionString
   - type: redis
-    name: cache
-    ipAllowList: [] # only allow internal connections
-    plan: free # optional (defaults to starter)
-    maxmemoryPolicy: allkeys-lfu # optional (defaults to allkeys-lru). Rails recommends allkeys-lfu as a default.
-    - key: REDIS_URL # this must match the name of the environment variable used in production.rb
-            fromService:
-              type: redis
-              name: cache
-              property: connectionString
+    name: redis
+    ipAllowList: []
+    plan: free
+    maxmemoryPolicy: noeviction
