@@ -1,8 +1,6 @@
 databases:
   - name: postgres
     ipAllowList: []
-    databaseName: rails_budget_app_production
-    user: rails_budget_app
 
 services:
   - type: web
