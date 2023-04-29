@@ -1,7 +1,7 @@
 databases:
   - name: rails_budget_app
     databaseName: rails_budget_app_development
-    user: developertariq
+    user: postgres
 
 services:
   - type: web
