@@ -1,0 +1,21 @@
+<div class="container d-flex flex-column vh-100 bg-light px-0">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <div class="d-flex justify-content-between align-items-center header">
+      <%= link_to root_path do %>
+        <span class="bi bi-arrow-left" style="font-size:24px;"></span>
+      <% end %>
+      <span class="text-uppercase">register</span>
+      <%= f.submit "Next", class: "btn text-white border-0" %>
+    </div>
+    <fieldset class="mb-3">
+      <%= f.text_field :name, placeholder: "Full name", autofocus: true, required: true, class: "form-control rounded-0 shadow-none" %>
+      <%= f.email_field :email, placeholder: "Email", autofocus: true, required: true, autocomplete: "email", class: "form-control rounded-0 shadow-none" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, placeholder: "Password", required: true, autocomplete: "new-password", class: "form-control rounded-0 shadow-none" %>
+    </fieldset>
+    <%= render "devise/shared/error_messages", resource: resource %>
+  <% end %> 
+</div>

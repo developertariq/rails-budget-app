@@ -17,6 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
+  port: 5432
+  username: postgres
+  password: tui123
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -29,19 +33,19 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: rails_budget_app
+  # username: 
 
   # The password associated with the postgres role (username).
-  #password:
+  # password: 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  # host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  # port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -78,9 +82,11 @@ test:
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
-#
+# <%= ENV["RAILS_BUDGET_APP_DATABASE_PASSWORD"] %>
+
 production:
   <<: *default
-  database: rails_budget_app_production
-  username: rails_budget_app
+  url: <%= ENV["DATABASE_URL"] %>
+  database: rails_budget_app_a4q4
+  username: rails_budget_app_user
   password: <%= ENV["RAILS_BUDGET_APP_DATABASE_PASSWORD"] %>
