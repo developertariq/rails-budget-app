@@ -12,6 +12,8 @@
 - [Budget App ](#budget-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
+  - [Live Demo ](#live-demo-)
+  - [Presentation ](#presentation-)
   - [Key Features ](#key-features-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
@@ -52,8 +54,21 @@ You will create a Ruby on Rails application that allows the user to:
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
-<!-- Key Features -->
+<!-- Live demo -->
+## Live Demo <a name="live-demo"></a>
 
+Click to observe the [live project](https://tariq-budget-app.onrender.com/)
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+<!-- Live demo -->
+## Presentation <a name="live-presentation"></a>
+
+Click to watch the [presentation on project](https://www.loom.com/share/f95e5751ddd5465ca06f77281437ab3b)
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+<!-- Key Features -->
 ## Key Features <a name="key-features"></a>
 
 - User can manage their budget.
@@ -63,7 +78,6 @@ You will create a Ruby on Rails application that allows the user to:
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
 ### Prerequisites
 
   * Make sure you have Ruby installed in your system. You can install it [here](https://www.ruby-lang.org/en/documentation/installation/)
@@ -145,7 +159,6 @@ Original design idea by [Gregoire Vella on Behance](https://www.behance.net/greg
 License of the design under The [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/).
 
 <!-- FAQ (optional) -->
-
 ## ❓ FAQ <a name="faq"></a>
 
 - Do I have to have any previous knowledge about ruby to use this project?
