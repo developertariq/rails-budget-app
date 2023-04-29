@@ -30,18 +30,19 @@ RSpec.describe Category, type: :model do
       expect(category.author).to eq(user)
     end
     it 'has many expenses' do
-      category = Category.create(name: 'Test', icon: fixture_file_upload('icon.png', 'image/png'), author: user)
-      expense1 = Expense.create(name: 'text expense 1', category:, amount: 10, author: user)
-      expense2 = Expense.create(name: 'text expense 2', category:, amount: 20, author: user)
-      expect(category.expenses).to eq([expense1, expense2])
+      expense1 = Expense.create(name: 'text expense 1', amount: 10, author: user)
+      expense2 = Expense.create(name: 'text expense 2', amount: 20, author: user)
+      expect(user.expenses).to eq([expense1, expense2])
     end
   end
 
   describe '#total_amount' do
     it 'returns the sum of expenses amount for the category' do
       category = Category.create(name: 'Test', icon: fixture_file_upload('icon.png', 'image/png'), author: user)
-      Expense.create(name: 'text expense 1', category:, amount: 10, author: user)
-      Expense.create(name: 'text expense 2', category:, amount: 20, author: user)
+      expense1 = Expense.create(name: 'text expense 1', amount: 10, author: user)
+      CategoryExpense.create(category:, expense: expense1)
+      expense2 = Expense.create(name: 'text expense 2', amount: 20, author: user)
+      CategoryExpense.create(category:, expense: expense2)
       expect(category.total_amount).to eq(30)
     end
   end

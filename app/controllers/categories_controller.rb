@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def index
     @user = current_user
-    @categories = @user.categories.all
+    @categories = current_user.categories.all
   end
 
   def new
@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def create
     @user = current_user
-    @category = @user.categories.new(category_params)
+    @category = current_user.categories.new(category_params)
 
     if @category.save
       redirect_to categories_path, notice: 'Category created successfully.'

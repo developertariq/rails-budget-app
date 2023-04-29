@@ -9,10 +9,10 @@ RSpec.describe Expense, type: :model do
     it { should validate_presence_of(:amount) }
     it { should validate_numericality_of(:amount).is_greater_than(0) }
     it { should belong_to(:author) }
-    it { should belong_to(:category) }
+    it { should have_many(:categories).through(:category_expenses) }
 
     it 'is valid with a name, an amount, an author, and a category' do
-      expense = Expense.new(name: 'Test', amount: 10, category:, author: user)
+      expense = Expense.new(name: 'Test', amount: 10, author: user)
       expect(expense).to be_valid
     end
 
@@ -37,13 +37,13 @@ RSpec.describe Expense, type: :model do
 
   describe 'associations' do
     it 'belongs to an author' do
-      expense = Expense.new(name: 'Test', amount: 10, author: user, category:)
+      expense = Expense.new(name: 'Test', amount: 10, author: user)
       expect(expense.author).to eq(user)
     end
 
-    it 'belongs to a category' do
-      expense = Expense.new(name: 'Test', amount: 10, author: user, category:)
-      expect(expense.category).to eq(category)
+    it 'has a relation to category through category_expense' do
+      expense = Expense.new(name: 'Test', amount: 10, author: user)
+      expect(expense.category_expenses).to eq(category.category_expenses)
     end
   end
 end

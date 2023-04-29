@@ -4,12 +4,15 @@ RSpec.describe 'categories/new.html.erb', type: :feature do
   let(:user) { FactoryBot.create(:user) }
 
   it 'creates a new category with a valid name and icon' do
-    category = Category.new(name: 'Test Category', author: user)
+    category = Category.new
     icon_path = Rails.root.join('spec', 'fixtures', 'files', 'icon.png')
     file = Rack::Test::UploadedFile.new(icon_path, 'image/png')
     category.icon = file
-
-    expect { category.save }.to change { Category.count }.by(1)
+    category.name = 'Test Category'
+    category.author = user
+    expect do
+      category.save
+    end.to change(Category, :count).by(1)
     expect(category.name).to eq('Test Category')
     expect(category.icon.attached?).to eq(true)
   end

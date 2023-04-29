@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'expenses/new.html.erb', type: :feature do
   let!(:user) { User.create(name: 'test', email: 'test@example.com', password: 'password') }
   let!(:category) { Category.create(name: 'Test1', icon: fixture_file_upload('icon.png', 'image/png'), author: user) }
-  let!(:expense) { Expense.new(name: 'Test', amount: 10, author: user, category:) }
+  let!(:expense) { Expense.new(name: 'Test', amount: 10, author: user) }
+  let!(:category_expense) { CategoryExpense.create(category:, expense:) }
 
   it 'does not create a new expense without a name' do
     expense = Expense.new(amount: 10)

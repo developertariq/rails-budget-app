@@ -51,9 +51,8 @@ RSpec.describe User, type: :model do
 
     it 'has many expenses' do
       user = User.create(name: 'Test', email: 'test@example.com', password: 'password')
-      category = Category.create(name: 'Test', icon: fixture_file_upload('icon.png', 'image/png'), author: user)
-      expense1 = Expense.create(name: 'Test1', amount: 10, author: user, category:)
-      expense2 = Expense.create(name: 'Test2', amount: 20, author: user, category:)
+      expense1 = Expense.create(name: 'Test1', amount: 10, author: user)
+      expense2 = Expense.create(name: 'Test2', amount: 20, author: user)
       expect(user.expenses).to eq([expense1, expense2])
     end
   end
