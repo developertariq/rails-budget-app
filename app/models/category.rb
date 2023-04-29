@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   validates :icon, presence: true
 
   belongs_to :author, class_name: 'User'
-  has_many :expenses
+  has_many :expenses, dependent: :destroy
 
   def total_amount
     expenses.sum(:amount)
